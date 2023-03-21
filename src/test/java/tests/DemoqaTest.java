@@ -2,30 +2,29 @@ package tests;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 import pages.components.RegistrationResultsModal;
-import utils.RandomUser;
+import utils.RandomStudent;
 
 public class DemoqaTest extends TestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     private final RegistrationResultsModal registrationResultsModal = new RegistrationResultsModal();
-    RandomUser randomUser = new RandomUser();
-    TestData testData = new TestData();
+    RandomStudent randomStudent = new RandomStudent();
 
     @Test
     void fillFormTest() {
         String
-                userFirstName = randomUser.getRandomFirstName(),
-                userLastName = randomUser.getRandomLastName(),
-                userEmail = randomUser.getRandomEmail(),
-                userGender = randomUser.getRandomGender(),
-                userPhone = randomUser.getRandomPhone(),
-                userBirthDay = randomUser.getRandomBirthDay("day"),
-                userBirthMonth = randomUser.getRandomBirthDay("month"),
-                userBirthYear = randomUser.getRandomBirthDay("year"),
-                userSubject = randomUser.getRandomSubject(),
-                userHobby = randomUser.getRandomHobby(),
-                userAddress = randomUser.getRandomAddress(),
-                userState = randomUser.getRandomState(),
-                userCity = randomUser.getRandomCity(userState);
+                userFirstName = randomStudent.getRandomFirstName(),
+                userLastName = randomStudent.getRandomLastName(),
+                userEmail = randomStudent.getRandomEmail(),
+                userGender = randomStudent.getRandomGender(),
+                userPhone = randomStudent.getRandomPhone(),
+                userBirthDay = randomStudent.getRandomBirthDay("day"),
+                userBirthMonth = randomStudent.getRandomBirthDay("month"),
+                userBirthYear = randomStudent.getRandomBirthDay("year"),
+                userSubject = randomStudent.getRandomSubject(),
+                userHobby = randomStudent.getRandomHobby(),
+                userAddress = randomStudent.getRandomAddress(),
+                userState = randomStudent.getRandomState(),
+                userCity = randomStudent.getRandomCity(userState);
         System.out.println(userBirthDay);
 
         registrationPage.openPage()
@@ -38,7 +37,7 @@ public class DemoqaTest extends TestBase {
                 .setBirthDate(userBirthDay, userBirthMonth, userBirthYear)
                 .setSubject(userSubject)
                 .setHobby(userHobby)
-                .uploadFile(testData.userPicturePath)
+                .uploadFile(randomStudent.getFullName())
                 .setAddress(userAddress)
                 .setState(userState)
                 .setCity(userCity)
@@ -54,7 +53,7 @@ public class DemoqaTest extends TestBase {
                 .verifyResult("Hobbies", userHobby)
                 .verifyResult("Address", userAddress)
                 .verifyResult("State and City", userState + " " + userCity)
-                .verifyResult("Picture", testData.userPictureName);
+                .verifyResult("Picture", randomStudent.getFileName());
     }
 }
 

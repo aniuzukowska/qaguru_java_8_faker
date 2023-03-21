@@ -1,9 +1,6 @@
 package tests;
 
-public class TestData {
-    public String
-            userPictureName = "picture.jpg",
-            userPicturePath = "img/picture.jpg";
+public class StudentRegistrationTestData {
 
     public String[]
             genders = {"Male", "Female", "Other"},

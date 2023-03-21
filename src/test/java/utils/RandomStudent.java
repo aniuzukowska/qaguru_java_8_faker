@@ -1,13 +1,13 @@
 package utils;
 import com.github.javafaker.Faker;
-import tests.TestData;
+import tests.StudentRegistrationTestData;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class RandomUser {
-    TestData testData = new TestData();
+public class RandomStudent {
+    StudentRegistrationTestData studentRegistrationTestData = new StudentRegistrationTestData();
     public static Faker faker = new Faker(new Locale("en"));
 
     public String getRandomFirstName() {
@@ -23,7 +23,7 @@ public class RandomUser {
     }
 
     public String getRandomGender() {
-        return faker.options().option(testData.genders);
+        return faker.options().option(studentRegistrationTestData.genders);
     }
 
     public String getRandomPhone() {
@@ -45,11 +45,11 @@ public class RandomUser {
     }
 
     public String getRandomSubject() {
-        return faker.options().option(testData.subjects);
+        return faker.options().option(studentRegistrationTestData.subjects);
     }
 
     public String getRandomHobby() {
-        return faker.options().option(testData.hobbies);
+        return faker.options().option(studentRegistrationTestData.hobbies);
     }
 
     public String getRandomAddress() {
@@ -57,17 +57,25 @@ public class RandomUser {
     }
 
     public String getRandomState() {
-        return faker.options().option(testData.states);
+        return faker.options().option(studentRegistrationTestData.states);
     }
 
     public String getRandomCity(String state) {
         return switch (state) {
-            case "NCR" -> faker.options().option(testData.ncrCities);
-            case "Uttar Pradesh" -> faker.options().option(testData.uttarPradeshCities);
-            case "Haryana" -> faker.options().option(testData.haryanaCities);
-            case "Rajasthan" -> faker.options().option(testData.rajasthanCities);
+            case "NCR" -> faker.options().option(studentRegistrationTestData.ncrCities);
+            case "Uttar Pradesh" -> faker.options().option(studentRegistrationTestData.uttarPradeshCities);
+            case "Haryana" -> faker.options().option(studentRegistrationTestData.haryanaCities);
+            case "Rajasthan" -> faker.options().option(studentRegistrationTestData.rajasthanCities);
             default -> throw new IllegalArgumentException("Указано некорректное наименование штата!");
         };
+    }
+
+    public String getFullName() {
+        return "img/picture.jpg";
+    }
+
+    public String getFileName() {
+        return "picture.jpg";
     }
 }
 
